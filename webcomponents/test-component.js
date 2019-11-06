@@ -13,6 +13,9 @@ export class TestComponent extends HTMLElement {
      * Standard lifecycle event when component is added to dom
      */
     async connectedCallback() {
+        // use convention over code to load the HTML file seperating logic from ui.
+        // the convention here is that the two files share the same name but have different extensions.
+        // as far as possible keep your js, html and css seperate loading each as and when you need it.
         this.innerHTML = await fetch(import.meta.url.replace(".js", ".html")).then(result => result.text());
 
         // read all the required elements from dom and cache is to private fields
